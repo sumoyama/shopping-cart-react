@@ -16,7 +16,7 @@ function useProducts() {
     console.log(productsFromStorage)
     setTimeout(async() => {
       await fetchProducts( undefined, setListProducts);
-      productsFromStorage.length > 0 ? setCartItems(productsFromStorage) : null;
+      if(productsFromStorage) setCartItems(productsFromStorage);  
       setIsLoading(false);
     }, 200);
   }, []);
