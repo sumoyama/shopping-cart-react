@@ -13,7 +13,7 @@ export default function Products({ listProducts }) {
           <h3 className="sm:text-xm md:text-sm lg:text-lg font-semibold">
             {name}
           </h3>
-          <p className="text-gray-600 mb-4">${price}</p>
+          <p className="text-gray-600 mb-4">R${price}</p>
         </div>
 
         <button
