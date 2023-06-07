@@ -8,7 +8,7 @@ export default function Header({
   return (
     <div className="w-full h-28 flex bg-[#fff159] justify-evenly items-center p-1">
       <div className="flex items-center justify-center cursor-pointer ">
-        <img src="../../img/logo.svg" alt="carrinho" className="w-40 h-28 " />
+        <img src="/logo.svg" alt="carrinho" className="w-40 h-28 " />
         <span className="font-bold sm:text-xl md:text-2xl lg:text-3xl  text-center">
           {" "}
           Compre Bem - A melhor Loja Virtual{" "}
@@ -41,7 +41,7 @@ export default function Header({
       </div>
 
       <img
-        src="../../img/carrinho.svg"
+        src="/carrinho.svg"
         alt="carrinho"
         className="w-12 h-26 mr-8 cursor-pointer"
       />

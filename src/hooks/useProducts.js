@@ -13,7 +13,6 @@ function useProducts() {
 
   useEffect(()=> {
     const productsFromStorage = JSON.parse(getCartProductsToStorages());
-    console.log(productsFromStorage)
     setTimeout(async() => {
       await fetchProducts( undefined, setListProducts);
       if(productsFromStorage) setCartItems(productsFromStorage);  
