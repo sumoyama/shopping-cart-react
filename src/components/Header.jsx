@@ -9,7 +9,7 @@ export default function Header({
     <div className="w-full h-28 flex bg-[#fff159] justify-evenly items-center p-1">
       <div className="flex items-center justify-center cursor-pointer ">
         <img src="/img/logo.svg" alt="carrinho" className="w-40 h-28 " />
-        <span className="font-bold text-3xl text-center">
+        <span className="font-bold sm:text-xl md:text-2xl lg:text-3xl  text-center">
           {" "}
           Compre Bem - A melhor Loja Virtual{" "}
         </span>
@@ -18,7 +18,7 @@ export default function Header({
       <div className="flex border-2 rounded">
         <input
           type="text"
-          className="px-4 py-2 w-80"
+          className="px-4 py-2  sm:w-45 md:w-60 lg:w-80"
           placeholder="Digite um produto..."
           name="searchProduct"
           value={searchProduct}

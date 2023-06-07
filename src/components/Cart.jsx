@@ -16,7 +16,9 @@ const Cart = () => {
   };
   return (
     <div className="container mx-auto py-8 w-1/5">
-      <h2 className="text-4xl font-bold mb-4">Carrinho de Compras</h2>
+      <h2 className="sm:text-xl md:text-3xl lg:text-4xl font-bold mb-4">
+        Carrinho de Compras
+      </h2>
       {cartItems.length === 0 ? (
         <p>Carrinho de Compras está vazio.</p>
       ) : (
@@ -26,7 +28,7 @@ const Cart = () => {
               key={"cartItem" + index}
               className="flex flex-col justify-between border-b py-4 gap-4"
             >
-              <div className="flex flex-row ">
+              <div className="flex sm:flex-col sm:justify-between lg:flex-row ">
                 <img
                   src={item.imageUrl}
                   alt={item.name}
@@ -41,20 +43,20 @@ const Cart = () => {
                 <div className="flex items-center">
                   <button
                     onClick={() => decreaseItemQuantity(item)}
-                    className="w-10 bg-blue-500 text-white px-2 py-1 rounded-l"
+                    className="sm:w-8 lg:w-10 bg-blue-500 text-white px-2 py-1 rounded-l"
                   >
                     -
                   </button>
                   <span className="px-2">{item.quantity}</span>
                   <button
                     onClick={() => increaseItemQuantity(item)}
-                    className="w-10 bg-blue-500 text-white px-2 py-1 rounded-r"
+                    className="sm:w-8 lg:w-10 bg-blue-500 text-white px-2 py-1 rounded-r"
                   >
                     +
                   </button>
                 </div>
                 <button
-                  className="flex justify-center w-20  m-8 px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600"
+                  className="flex justify-center sm:w-10 lg:w-20  m-8 px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600"
                   onClick={() => removeFromCart(item)}
                 >
                   <svg
@@ -65,7 +67,7 @@ const Cart = () => {
                     strokeWidth="2"
                     strokeLinecap="round"
                     strokeLinejoin="round"
-                    className="feather feather-trash-2 w-4 h-4"
+                    className="feather feather-trash-2 lg:w-4 h-4 "
                   >
                     <polyline points="3 6 5 6 21 6" />
                     <path d="M5.878 6.061L5 19a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2l-.879-12.94A2 2 0 0 0 15.155 3H8.846a2 2 0 0 0-1.977 1.061z" />
