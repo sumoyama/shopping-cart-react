@@ -16,10 +16,9 @@ export default function Products({listProducts}) {
         </div>
       
           <button 
-            className="mt-auto px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
-            onClick={()=> addToCart(name)}
-          >
-            
+            className="mt-auto px-4 py-2 bg-zinc-500 text-white rounded hover:bg-zinc-600"
+            onClick={()=> addToCart(name, image, price)}
+          >            
             Adicionar ao carrinho
           </button>
       </>
@@ -27,10 +26,10 @@ export default function Products({listProducts}) {
   }
 
   return (
-    <div className="container mx-auto py-8  ">
+    <div className="container mx-auto p-8 w-4/5 ">
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
           {listProducts.map((item, index) => (
-            <div key={index} className=" flex flex-col justify-between bg-white shadow rounded-lg p-4 ">
+            <div key={'item'+ index} className=" flex flex-col justify-between bg-white shadow rounded-lg p-4 ">
             {
               mapToPageProduct(item)
             }

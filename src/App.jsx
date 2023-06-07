@@ -3,6 +3,7 @@ import Header from './components/Header'
 import Products from './components/Products';
 import Loading from './components/Loading';
 import ProductsContext from './context/ProductsContexts';
+import Cart from './components/Cart';
 
 export default function App() {
   const {
@@ -18,7 +19,12 @@ export default function App() {
       />
       {
         isLoading ? <Loading /> 
-        : <Products listProducts={listProducts} />
+        : (
+          <div className='flex'>
+            <Products listProducts={listProducts} />
+            <Cart />
+          </div>
+        )
       }
     </main>
   )

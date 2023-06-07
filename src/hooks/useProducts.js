@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
 import fetchProducts from '../services/getApi';
+import { getCartProductsToStorages, setCartProductsToStorages } from '../services/localStorage';
+
 
 
 function useProducts() {
@@ -8,46 +10,71 @@ function useProducts() {
   const [cartItems, setCartItems] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
+
   useEffect(()=> {
-    setTimeout(() => {
-      fetchProducts( undefined, setListProducts);
+    const productsFromStorage = JSON.parse(getCartProductsToStorages());
+    console.log(productsFromStorage)
+    setTimeout(async() => {
+      await fetchProducts( undefined, setListProducts);
+      productsFromStorage.length > 0 ? setCartItems(productsFromStorage) : null;
       setIsLoading(false);
     }, 200);
-}, [])
-
+  }, []);
   const searchButtonClick = () => {
     setIsLoading(true);
       setTimeout(async() => {
         await fetchProducts(searchProduct, setListProducts);
         setSearchProduct('');
         setIsLoading(false);
-      }, 100); 
+      }, 200); 
     }
   
-  const addToCart = (product) => {
+  const addToCart = (name, image, price) => { 
     const indexItem = cartItems.findIndex((item)=> {
-     return  item.name === product 
+     return  item.name === name 
     });
-    console.log(indexItem)
     if(indexItem> -1){
-      console.log()
-      cartItems[indexItem].quantidade =  cartItems[indexItem].quantidade  +1;
+      cartItems[indexItem].quantity += 1;
+      
       setCartItems([...cartItems]);
+      setCartProductsToStorages(JSON.stringify([...cartItems]))
     }
     else {
       const item = {
-          name: product,
-          quantidade: 1,
+          name,
+          imageUrl: image,
+          price,
+          quantity: 1,
         }
       setCartItems([...cartItems, item]);
+      setCartProductsToStorages(JSON.stringify([...cartItems, item]));
     }
-
   };
 
   const removeFromCart = (item) => {
-    const updatedCartItems = cartItems.filter((cartItem) => cartItem.id !== item.id);
+    const updatedCartItems = cartItems.filter((cartItem) => cartItem.name !== item.name);
     setCartItems(updatedCartItems);
+    setCartProductsToStorages(JSON.stringify(updatedCartItems));
+
   };
+
+  const increaseItemQuantity = (item) => {
+    item.quantity += 1;
+    setCartItems([...cartItems]);
+    setCartProductsToStorages(JSON.stringify([...cartItems]))
+
+  }
+  const decreaseItemQuantity = (item) => {
+    if(item.quantity === 1) {
+      removeFromCart(item);
+    }
+    else{
+      item.quantity -= 1;
+      setCartItems([...cartItems]);
+      setCartProductsToStorages(JSON.stringify([...cartItems]))
+    }
+    
+  }
   return ({
     isLoading,
     setIsLoading,
@@ -58,6 +85,8 @@ function useProducts() {
     addToCart,
     removeFromCart,
     searchButtonClick,
+    increaseItemQuantity,
+    decreaseItemQuantity,
   });
 }
 

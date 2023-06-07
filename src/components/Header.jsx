@@ -1,9 +1,10 @@
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 
-export default function Header({ 
-  searchProduct, setSearchProduct, actionButtonClick 
+export default function Header({
+  searchProduct,
+  setSearchProduct,
+  actionButtonClick,
 }) {
-
   return (
     <div className="w-full h-28 flex bg-[#fff159] justify-evenly items-center p-1">
       <div className="flex items-center justify-center cursor-pointer ">
@@ -31,8 +32,10 @@ export default function Header({
             viewBox="0 0 24 24"
             onClick={actionButtonClick}
           >
-            <path d="M16.32 14.9l5.39 5.4a1 1 0 0 1-1.42 1.4l-5.38-5.38a8 
-              8 0 1 1 1.41-1.41zM10 16a6 6 0 1 0 0-12 6 6 0 0 0 0 12z" />
+            <path
+              d="M16.32 14.9l5.39 5.4a1 1 0 0 1-1.42 1.4l-5.38-5.38a8 
+              8 0 1 1 1.41-1.41zM10 16a6 6 0 1 0 0-12 6 6 0 0 0 0 12z"
+            />
           </svg>
         </button>
       </div>
@@ -46,7 +49,8 @@ export default function Header({
   );
 }
 
-Header.propTypes =  {
-  searchProduct:PropTypes.string.isRequired,
+Header.propTypes = {
+  searchProduct: PropTypes.string.isRequired,
   setSearchProduct: PropTypes.func.isRequired,
-}
+  actionButtonClick: PropTypes.func.isRequired,
+};
